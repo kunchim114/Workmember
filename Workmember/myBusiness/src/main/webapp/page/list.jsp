@@ -135,17 +135,20 @@ totalBlock = (int) Math.ceil((double) totalPage / pagePerBlock); //전체블럭�
 									}
 								}
 								String secretK = bMgr.getSecret(num);
-//								String dCheck = request.getParameter("dCheck");
-//								if(name.equals("[remove]")) {
-									%>
-<!-- 									<a href="javascript:read('<%=num%>')">[삭제된 글]</a> -->
-							<%
-//								}
-								 if (secretK.equals("")) {
- %>
-<a href="javascript:read('<%=num%>')"><%=subject%></a> 
-<% }else{ %> 
-<a href="secretCheck.jsp?num=<%=num%>&nowPage=<%=nowPage%>">[비밀글]</a>
+								String dCheck = request.getParameter("dCheck");
+
+								if (subject.equals("[remove]")) {
+								%> <style>
+									a {
+									color: red;
+									}
+									</style>
+								<a href="javascript:read('<%=num%>')">[삭제된
+									글]</a> <%
+ } else if (secretK.equals("")) {
+ %> <a href="javascript:read('<%=num%>')"><%=subject%></a> <%
+ } else {
+ %> <a href="secretCheck.jsp?num=<%=num%>&nowPage=<%=nowPage%>">[비밀글]</a>
 								<%
 								}
 								%>

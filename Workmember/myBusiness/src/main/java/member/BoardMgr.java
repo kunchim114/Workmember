@@ -228,7 +228,7 @@ public class BoardMgr {
 						UtilMgr.delete(SAVEFOLDER + "/" + rs.getString(1));
 				}
 			}
-			sql = "delete from tblBoard where num=?";
+			sql = "update * from tblboard /* 수정할 것 */ where num= ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();

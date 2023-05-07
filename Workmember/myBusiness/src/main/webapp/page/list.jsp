@@ -135,7 +135,6 @@ totalBlock = (int) Math.ceil((double) totalPage / pagePerBlock); //전체블럭�
 									}
 								}
 								String secretK = bMgr.getSecret(num);
-								String dCheck = request.getParameter("dCheck");
 
 								if (subject.equals("[remove]")) {
 								%> <style>

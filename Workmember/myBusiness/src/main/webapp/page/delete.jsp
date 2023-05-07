@@ -11,22 +11,19 @@
 	request.setCharacterEncoding("UTF-8");
 	String nowPage = request.getParameter("nowPage");
 	int num = Integer.parseInt(request.getParameter("num"));
-	int dCheck = 0;
 	BoardBean bean = (BoardBean) session.getAttribute("bean");
 
 	if (bean.getSecret().isEmpty()) {
 		BoardMgr bMgr = new BoardMgr();
 		bMgr.deleteData(num);
-		dCheck = 1;
-		response.sendRedirect("list.jsp?nowPage=" + nowPage+"&dCheck="+ dCheck);
+		response.sendRedirect("list.jsp?nowPage=" + nowPage);
 	} else {
 		String inSecret = request.getParameter("secret");
 
 		if (inSecret != null && inSecret.equals(bean.getSecret())) {
 			BoardMgr bMgr = new BoardMgr();
 			bMgr.deleteData(num);
-			dCheck = 1;
-			response.sendRedirect("list.jsp?nowPage=" + nowPage+"&dCheck="+ dCheck);
+			response.sendRedirect("list.jsp?nowPage=" + nowPage);
 		} else {
 	%>
 	<div align="center">
